@@ -16,6 +16,9 @@ export class AppComponent {
   ngOnInit() {}
 
   churchClock(timeInput: any) {
+    let audio: HTMLAudioElement = new Audio(
+      'https://drive.google.com/uc?export=download&id=1M95VOpto1cQ4FQHzNBaLf0WFQglrtWi7'
+    );
     const timeSliced = timeInput.value.time.split(':');
     const hourRings = timeSliced[0] % 12;
     const hoursIn24HourFormat = timeSliced[0];
@@ -33,6 +36,12 @@ export class AppComponent {
       this.hourRings = 0;
       this.quaters = 0;
       return;
+    }
+
+    for (let i = 0; i <= hourRings; i++) {
+      setTimeout(() => {
+        audio.play();
+      }, 1000);
     }
 
     this.hourRings = hourRings;
